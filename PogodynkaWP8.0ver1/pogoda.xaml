@@ -1,0 +1,75 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="PogodynkaWP8._0ver1.Pogoda"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--Pivot Control-->
+        <phone:Pivot Title="POGODYNKA">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="pogoda">
+                <ScrollViewer x:Name="scrollViewer">
+                    <StackPanel x:Name="glownyStackPanel">
+                        <TextBlock x:Name="miastoTB" Text="{Binding miasto}" FontFamily="{StaticResource PhoneFontFamilySemiLight}" Margin="12,12,12,12"   FontSize="{StaticResource PhoneFontSizeExtraLarge}" />
+                        <TextBlock x:Name="oDniu" Text="" Margin="{StaticResource PhoneMargin}" FontSize="{StaticResource PhoneFontSizeMedium}" TextWrapping="Wrap" Visibility="Collapsed"/>
+                        <TextBlock x:Name="textBox1" Text="       Proszę czekać, pobieram dane pogodowe" Margin="{StaticResource PhoneMargin}" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="{StaticResource PhoneFontSizeNormal}" TextWrapping="Wrap" />                        
+                        <Image x:Name="ikonka" Source="/Icons/wait.png" Margin="{StaticResource PhoneMargin}" />
+                    </StackPanel>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="godzinowa">
+                <ScrollViewer>
+                    <StackPanel x:Name="hStackPanel">
+
+                    </StackPanel>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="następne dni">
+                <ScrollViewer>
+                    <StackPanel x:Name="ndStackPanel"/>
+                </ScrollViewer>
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="ubranie">
+                <Grid/>
+            </phone:PivotItem>
+
+            <!-- Pivot item three-->
+            <phone:PivotItem Header="sport">
+                <ScrollViewer>
+                    <!--<StackPanel x:Name="sportySP"/>-->
+                    <!--<phone:LongListSelector x:Name="sportySP" FontSize="{StaticResource PhoneFontSizeLarge}">
+                        <phone:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}"/>
+                            </DataTemplate>
+                        </phone:LongListSelector.ItemTemplate>
+                    </phone:LongListSelector>-->
+                    <ListBox x:Name="sportyLB"  FontSize="{StaticResource PhoneFontSizeLarge}" FontFamily="{StaticResource PhoneFontFamilySemiLight}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" FontFamily="{StaticResource PhoneFontFamilySemiLight}" FontSize="{StaticResource PhoneFontSizeLarge}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+
+                </ScrollViewer>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+
+</phone:PhoneApplicationPage>
